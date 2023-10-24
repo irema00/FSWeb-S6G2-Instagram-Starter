@@ -24,15 +24,14 @@ const App = () => {
   // Arama çubuğunun çalışması için , arama kriterini tutacak başka bir state'e ihtiyacımız olacak.
 
   const gonderiyiBegen = (gonderiID) => {
-    const guncelGonderi = gonderiler.map((gonderi) => {
-      if (gonderi.id === gonderiID) {
-        gonderi.begeniSayisi = gonderi.begeniSayisi + 1;
-        return gonderiler.begeniSayisi;
-      } else {
-        return gonderiler.begeniSayisi;
-      }
-    });
-    setGonderi(guncelGonderi);
+    setGonderi(
+      gonderiler.map((gonderi) => {
+        if (gonderi.id === gonderiID) {
+          gonderi.likes++;
+        }
+        return gonderi;
+      })
+    );
     /*
       Bu fonksiyon, belirli bir id ile gönderinin beğeni sayısını bir artırma amacına hizmet eder.
 
@@ -48,7 +47,6 @@ const App = () => {
 
   return (
     <div className="App">
-      App Çalışıyor
       <AramaCubugu aramaCubugu={aramaCubugu} setAramaCubugu={setAramaCubugu} />
       <Gonderiler gonderiyiBegen={gonderiyiBegen} gonderiler={gonderiler} />
       {/* Yukarıdaki metni projeye başladığınızda silin*/}
