@@ -1,4 +1,5 @@
 import React from "react";
+
 import Yorumlar from "../Yorumlar/Yorumlar";
 import BegenBolumu from "./BegenBolumu";
 import GonderiBasligi from "./GonderiBasligi";
@@ -21,9 +22,12 @@ const Gonderi = (props) => {
         />
       </div>
       {/* BegenBolumu düzgün çalışması için ihtiyaç duyduğu tüm proplara sahip mi? */}
-      <BegenBolumu gonderiyiBegen={() => gonderiyiBegen(gonderi.id)} />
+      <BegenBolumu
+        gonderiyiBegen={() => gonderiyiBegen(gonderi.id)}
+        begeniSayisi={gonderi.begeniSayisi}
+      />
       {/* Yorumlar da proplara dikkat istiyor! */}
-      <Yorumlar />
+      <Yorumlar yorumlar={gonderi.yorum} />
     </div>
   );
 };
